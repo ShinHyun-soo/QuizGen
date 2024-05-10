@@ -26,9 +26,9 @@ from operator import itemgetter
 
 # load the pdf file to drive
 # split the file to text, table and images
-def doc_partition(path,file_name):
+def doc_partitionl(pdf_path):
   raw_pdf_elements = partition_pdf(
-    filename=path + file_name,
+    filename=pdf_path,
     extract_images_in_pdf=True,
     infer_table_structure=True,
     chunking_strategy="by_title",
@@ -38,9 +38,8 @@ def doc_partition(path,file_name):
     image_output_dir_path=path)
 
   return raw_pdf_elements
-path = "/content/"
-file_name = "wildfire_stats.pdf"
-raw_pdf_elements = doc_partition(path,file_name)
+
+raw_pdf_elements = doc_partitionl(pdf_path)
 
 # appending texts and tables from the pdf file
 def data_category(raw_pdf_elements): # we may use decorator here

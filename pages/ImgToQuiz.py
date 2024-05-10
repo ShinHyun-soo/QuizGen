@@ -67,6 +67,12 @@ def main():
         uploaded_image = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
         max_tokens = st.number_input("Max Tokens", min_value=10, max_value=500, value=100)
 
+    if uploaded_image is not None:
+        # Display the uploaded image
+        st.image(uploaded_image, caption='Uploaded Image', use_column_width=True)
+    else:
+        st.write("Please upload an image.")
+
     generate_button = st.button("퀴즈 생성")
     # Main content area
     if generate_button and uploaded_image is not None:
@@ -75,13 +81,16 @@ def main():
             encoded_uploaded_image = base64.b64encode(uploaded_image.read()).decode('utf-8')
             # Summarize the uploaded image
             caption = summarize_image(encoded_uploaded_image)
-            prompt = f"Create Quiz based on: {caption}"
+            st.subheader("이 이미지는 .. ")
+            st.write(caption)
+
+            prompt = f"Create multiple-choice questions and answers {caption}, and translate them into korean, only prints korean. "
             # Generate text based on the prompt
             generated_text = generate_text(prompt, max_tokens)
         st.subheader("Generated Text")
         #st.write(generated_text)
         st.session_state.script = generated_text
-        st.text_area("Generated quiz", st.session_state.script, height=500)
+        st.write(st.session_state.script)
 
 
 if __name__ == "__main__":
