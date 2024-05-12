@@ -71,7 +71,7 @@ def main():
         # Display the uploaded image
         st.image(uploaded_image, caption='Uploaded Image', use_column_width=True)
     else:
-        st.write("Please upload an image.")
+        st.write("이미지를 업로드 해주세요.")
 
     generate_button = st.button("퀴즈 생성")
     # Main content area
@@ -82,7 +82,8 @@ def main():
             # Summarize the uploaded image
             caption = summarize_image(encoded_uploaded_image)
             st.subheader("이 이미지는 .. ")
-            st.write(caption)
+            with st.expander("설명 보기"):
+                st.write(caption)
 
             prompt = f"Create multiple-choice questions and answers {caption}, and translate them into korean, only prints korean. "
             # Generate text based on the prompt
