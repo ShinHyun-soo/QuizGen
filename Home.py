@@ -20,7 +20,7 @@ st.markdown(
 import streamlit as st
 from streamlit_google_auth import Authenticate
 
-google_credentials = st.secrets["GOOGLE_CREDENTIALS"] 
+google_credentials = st.secrets["GOOGLE_CREDENTIALS"]
 
 st.title('Streamlit Google Auth Example')
 
