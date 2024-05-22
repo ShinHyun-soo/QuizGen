@@ -1,5 +1,5 @@
 # 프로젝트 현황판
-
+https://youtu.be/iT9Mi1pRvdg?si=nBag3GvG3WyEvZ8z
 [토큰갯수링크](https://platform.openai.com/docs/models/gpt-3-5-turbo)
 
 |     | 객관식 | 주관식 | 참/거짓 | 빈칸 | 한글 | 비고 |
