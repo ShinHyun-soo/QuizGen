@@ -114,12 +114,13 @@ def create_open_ended_template():
 
 
 def main():
-    st.title("Quiz App")
-    st.write("This app generates a quiz based on a given context.")
+    st.title("QuizGen")
+    st.write("주제를 주시면, 퀴즈를 만들어 드립니다.")
     llm = ChatOpenAI()
-    context = st.text_area("Enter the concept/context for the quiz")
-    num_questions = st.number_input("Enter the number of questions", min_value=1, max_value=10, value=3)
-    quiz_type = st.selectbox("Select the quiz type", ["multiple-choice", "true-false", "open-ended"])
+    context = st.text_area("주제를 입력해 주세요")
+    num_questions = st.number_input("퀴즈 갯수 선택", min_value=1, max_value=10, value=3)
+    #일단 open-ended 를 주관식으로 번역하였음.
+    quiz_type = st.selectbox("퀴즈 유형 선택", ["객관식", "참/거짓", "주관식"])
 
     # 퀴즈 유형 변경 시 상태 초기화
     if 'quiz_type' not in st.session_state or st.session_state.quiz_type != quiz_type:
@@ -128,13 +129,14 @@ def main():
         st.session_state.user_answers = None
 
     if st.button("Generate Quiz"):
-        if quiz_type == "multiple-choice":
+        if quiz_type == "객관식":
             prompt_template = create_multiple_choice_template()
             pydantic_object_schema = QuizMultipleChoice
-        elif quiz_type == "true-false":
+        elif quiz_type == "참/거짓":
             prompt_template = create_true_false_template()
             pydantic_object_schema = QuizTrueFalse
-        else:
+        # 추후 단답형, 서술형 추가를 위해 else 를 elif 로 대채햐였음.
+        elif quiz_type == "주관식":
             prompt_template = create_open_ended_template()
             pydantic_object_schema = QuizOpenEnded
 
@@ -160,7 +162,7 @@ def main():
             correct_answers = []
             for idx, question in enumerate(st.session_state.quiz_data.questions):
                 correct_answer = st.session_state.quiz_data.answers[idx]
-                if quiz_type != "open-ended":
+                if quiz_type != "주관식":
                     if user_answers[idx] == correct_answer:
                         score += 1
                 correct_answers.append(f"{idx + 1}. {correct_answer}")

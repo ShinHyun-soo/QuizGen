@@ -11,6 +11,8 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 load_dotenv()
 
+##임시 업로드용 파일 TextToQuiz 구현 후 대체 해야함.
+
 
 def get_vectorstore_from_url(url):
     # get the text in document form

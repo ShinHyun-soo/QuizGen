@@ -21,15 +21,15 @@ import streamlit as st
 from streamlit_google_auth import Authenticate
 import json
 
-#google_credentials = st.secrets["GOOGLE_CREDENTIALS"]
+google_credentials = st.secrets["GOOGLE_CREDENTIALS"]
 
 st.title('Streamlit Google Auth Example')
 
 authenticator = Authenticate(
-    secret_credentials_path = 'google_credentials.json',
+    secret_credentials_path = google_credentials,
     cookie_name='my_cookie_name',
     cookie_key='this_is_secret',
-    redirect_uri = 'http://localhost:8501',
+    redirect_uri = 'http://hsu-quizgen.streamlit.app',
 )
 
 # Catch the login event
