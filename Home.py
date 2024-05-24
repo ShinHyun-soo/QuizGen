@@ -27,7 +27,7 @@ TOKEN_URL = "https://oauth2.googleapis.com/token"
 #REVOKE_URL = <YOUR REVOKE URL>
 CLIENT_ID = "252051893046-jkhn58c4217hougj5t0f06irbnepue0a.apps.googleusercontent.com"
 CLIENT_SECRET = "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"
-REDIRECT_URI = "https://hsu-quizgen.streamlit.app"
+REDIRECT_URI = "https://hsu-quizgen.streamlit.app/login/oauth2/client/google "
 SCOPE = "openid email profile"
 
 oauth2 = OAuth2Component(CLIENT_ID, CLIENT_SECRET, AUTHORIZATION_URL, TOKEN_URL, TOKEN_URL) #REVOKE_URL)
