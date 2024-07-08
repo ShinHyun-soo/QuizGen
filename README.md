@@ -1,3 +1,7 @@
+oursiteinformation: https://docs.google.com/spreadsheets/d/1UwGSub2fcS2u8ah8kLWwU8HF2A_cKzdVy7f2VuRcVzQ/edit?gid=0#gid=0
+
+
+
 | No | 항목 | 설명 | 기능 요구사항 |
 |----|-----|------|-------------|
 | 1  | 5지 선다형 | 객관식 답의 개수를 임의로 설정할 수 있는 기능 | 사용자가 최소 2개에서 최대 5개까지 답안 개수를 설정 |
